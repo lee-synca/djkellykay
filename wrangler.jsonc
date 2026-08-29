@@ -1,0 +1,11 @@
+{
+	"name": "djkellykay",
+	"compatibility_date": "2026-08-29",
+	"assets": {
+		"directory": "./public"
+	},
+	"routes": [
+		{ "pattern": "djkellykay.com", "custom_domain": true },
+		{ "pattern": "www.djkellykay.com", "custom_domain": true }
+	]
+}

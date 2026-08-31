@@ -39,6 +39,17 @@
     );
   }
 
+  // A track may be a plain "Artist - Title" string or a
+  // { artist, title, time } object. Normalize to the object form.
+  function trackParts(tr) {
+    if (typeof tr === "string") {
+      var i = tr.indexOf(" - ");
+      if (i === -1) return { artist: "", title: tr, time: "" };
+      return { artist: tr.slice(0, i), title: tr.slice(i + 3), time: "" };
+    }
+    return { artist: tr.artist || "", title: tr.title || "", time: tr.time || "" };
+  }
+
   // Meta line under a tape name. Only states what the data actually
   // has: track count / length when known, else the tape's subtitle.
   function factsLine(tape, extra) {
@@ -255,29 +266,34 @@
     var right = document.getElementById("tape-right");
     if (right) {
       var rows = "";
+      var hasTimes = tape.tracks && tape.tracks.some(function (t) { return trackParts(t).time; });
       if (tape.tracks && tape.tracks.length) {
         for (var i = 0; i < tape.tracks.length; i++) {
-          var tr = tape.tracks[i];
+          var tp = trackParts(tape.tracks[i]);
           var n = i + 1;
+          var names = tp.artist
+            ? '<span class="artist">' + esc(tp.artist) + '</span><span class="song"> — ' + esc(tp.title) + "</span>"
+            : '<span class="artist">' + esc(tp.title) + "</span>";
           rows +=
             '<div class="track">' +
             '<span class="num">' + (n < 10 ? "0" + n : n) + "</span>" +
-            '<span class="names"><span class="artist">' + esc(tr.artist) + '</span><span class="song"> — ' + esc(tr.title) + "</span></span>" +
-            '<span class="time">' + esc(tr.time) + "</span>" +
+            '<span class="names">' + names + "</span>" +
+            (hasTimes ? '<span class="time">' + esc(tp.time) + "</span>" : "") +
             "</div>";
         }
       } else {
         rows = '<div class="track-placeholder">Tracklist to be added.</div>';
       }
+      var tagline = tape.subtitle || tape.blurb;
       right.innerHTML =
         '<div class="headings">' +
         '<div class="eyebrow">VOL. ' + esc(tape.vol) + " · RELEASED " + esc((tape.released || "").toUpperCase()) + "</div>" +
         "<h1>" + esc(tape.title) + "</h1>" +
         '<div class="tape-facts">' + factsLine(tape, tape.trackCount ? "one continuous mix" : "") + "</div>" +
         "</div>" +
-        (tape.blurb ? '<p class="tape-blurb">' + esc(tape.blurb) + "</p>" : "") +
+        (tagline ? '<p class="tape-blurb">' + esc(tagline) + "</p>" : "") +
         '<div class="tracklist">' +
-        '<div class="tracklist-head"><span>TRACKLIST</span><span>TIME</span></div>' +
+        '<div class="tracklist-head"><span>TRACKLIST</span>' + (hasTimes ? "<span>TIME</span>" : "") + "</div>" +
         rows +
         "</div>";
     }

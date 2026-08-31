@@ -3,45 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mixtape — DJ Kelly Kay</title>
-  <meta name="description" content="Stream or download a DJ Kelly Kay mixtape — one continuous mix, released when it's ready.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF5A1E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='5' width='20' height='14' rx='2'/%3E%3Ccircle cx='8.5' cy='11' r='2'/%3E%3Ccircle cx='15.5' cy='11' r='2'/%3E%3Cpath d='M6.5 19l1.2-2.5h8.6L17.5 19'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="css/style.css">
+  <title>DJ Kelly Kay — Mixtapes</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // The site is now a single page (index.html) with hash routing.
+    // Redirect any old ?id= links to the matching hash route.
+    (function () {
+      var id = new URLSearchParams(location.search).get("id");
+      location.replace("index.html" + (id ? "#/tape/" + encodeURIComponent(id) : "#/"));
+    })();
+  </script>
 </head>
-<body data-page="mixtape">
-  <div class="wrap">
-
-    <nav class="topbar">
-      <a class="back-link" href="index.html#tapes">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg>
-        Back to the crate
-      </a>
-      <a class="wordmark" href="index.html">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF5A1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><circle cx="15.5" cy="11" r="2"></circle><path d="M6.5 19l1.2-2.5h8.6L17.5 19"></path></svg>
-        <span>DJ KELLY KAY</span>
-      </a>
-    </nav>
-
-    <main class="tape-page">
-      <div class="tape-page-left" id="tape-left"></div>
-      <div class="tape-page-right" id="tape-right"></div>
-    </main>
-
-    <footer class="footer">
-      <a class="wordmark" href="index.html">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5A1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><circle cx="15.5" cy="11" r="2"></circle><path d="M6.5 19l1.2-2.5h8.6L17.5 19"></path></svg>
-        <span>DJ KELLY KAY</span>
-      </a>
-      <div class="footer-social" data-social></div>
-      <div class="footer-copy">© 2026 DJ Kelly Kay · <a data-contact-link></a></div>
-    </footer>
-
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+<body>
+  <p style="font-family: system-ui, sans-serif; padding: 24px;">
+    Redirecting… <a href="index.html">Go to DJ Kelly Kay</a>
+  </p>
 </body>
 </html>

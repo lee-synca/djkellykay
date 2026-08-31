@@ -165,7 +165,7 @@
       coverEl.textContent = tape.vol;
     }
     player.el.querySelector(".player-title").textContent = tape.title;
-    player.el.querySelector(".player-sub").textContent = ["Vol. " + tape.vol, tape.runtime].filter(Boolean).join(" · ");
+    player.el.querySelector(".player-sub").textContent = [tape.vol ? "Vol. " + tape.vol : tape.released, tape.runtime].filter(Boolean).join(" · ");
     player.el.classList.add("active");
     document.body.classList.add("has-player");
     audio.src = tape.streamUrl;
@@ -208,7 +208,7 @@
           '<a class="cover-link" href="mixtape.html?id=' + encodeURIComponent(latest.id) + '" aria-label="View ' + esc(latest.title) + '">' + coverHTML(latest) + "</a>" +
           '<div class="featured-meta">' +
           '<div class="stack">' +
-          '<div class="eyebrow">LATEST · VOL. ' + esc(latest.vol) + "</div>" +
+          '<div class="eyebrow">LATEST' + (latest.vol ? " · VOL. " + esc(latest.vol) : "") + "</div>" +
           '<div class="tape-name"><a href="mixtape.html?id=' + encodeURIComponent(latest.id) + '">' + esc(latest.title) + "</a></div>" +
           '<div class="tape-facts">' + factsLine(latest, latest.released) + "</div>" +
           "</div>" +
@@ -229,7 +229,7 @@
           '<div class="tape-card">' +
           '<a class="cover-link" href="mixtape.html?id=' + encodeURIComponent(t.id) + '" aria-label="View ' + esc(t.title) + '">' + coverHTML(t) + "</a>" +
           '<div class="info">' +
-          '<div class="eyebrow">VOL. ' + esc(t.vol) + " · " + esc(month) + "</div>" +
+          '<div class="eyebrow">' + (t.vol ? "VOL. " + esc(t.vol) + " · " : "") + esc(month) + "</div>" +
           '<div class="tape-name"><a href="mixtape.html?id=' + encodeURIComponent(t.id) + '">' + esc(t.title) + "</a></div>" +
           '<div class="tape-facts">' + factsLine(t) + "</div>" +
           "</div>" +
@@ -287,7 +287,7 @@
       var tagline = tape.subtitle || tape.blurb;
       right.innerHTML =
         '<div class="headings">' +
-        '<div class="eyebrow">VOL. ' + esc(tape.vol) + " · RELEASED " + esc((tape.released || "").toUpperCase()) + "</div>" +
+        '<div class="eyebrow">' + (tape.vol ? "VOL. " + esc(tape.vol) + " · " : "") + "RELEASED " + esc((tape.released || "").toUpperCase()) + "</div>" +
         "<h1>" + esc(tape.title) + "</h1>" +
         '<div class="tape-facts">' + factsLine(tape, tape.trackCount ? "one continuous mix" : "") + "</div>" +
         "</div>" +

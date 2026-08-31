@@ -52,14 +52,14 @@ window.MIXTAPES = [
     trackCount: null,
     released: "February 2022",
     blurb: "Turn it up.",
-    fileNote: "",
+    fileNote: "MP3 · 189 MB",
     coverImage: "covers/got-a-speaker-bro.jpg",
     coverAlt: "Got A Speaker Bro? Vol 1 cover — a giant boombox against a red sunset skyline with palm trees",
     coverBg: "#FF5A1E",
     coverInk: "#16130F",
     coverBorder: "",
-    streamUrl: "",
-    downloadUrl: "",
+    streamUrl: "https://files.djkellykay.com/DJ%20Kelly%20Kay%20-%20Got%20A%20Speaker%20Bro%20-%20Vol%201%20(1).mp3",
+    downloadUrl: "https://files.djkellykay.com/DJ%20Kelly%20Kay%20-%20Got%20A%20Speaker%20Bro%20-%20Vol%201%20(1).mp3",
     tracks: []
   },
   {

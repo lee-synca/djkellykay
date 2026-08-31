@@ -301,10 +301,28 @@
 
   // ---------- boot ----------
 
+  var svgInstagram = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"></circle></svg>';
+  var svgSoundcloud = '<svg width="24" height="20" viewBox="0 0 26 18" fill="currentColor" stroke="none" aria-hidden="true"><rect x="0.5" y="9" width="1.7" height="6" rx="0.85"></rect><rect x="4" y="6.5" width="1.7" height="8.5" rx="0.85"></rect><rect x="7.5" y="4" width="1.7" height="11" rx="0.85"></rect><rect x="11" y="6" width="1.7" height="9" rx="0.85"></rect><rect x="14.5" y="7.5" width="1.7" height="7.5" rx="0.85"></rect><rect x="18" y="5.5" width="1.7" height="9.5" rx="0.85"></rect><rect x="21.5" y="8" width="1.7" height="7" rx="0.85"></rect></svg>';
+
   function initFooter() {
-    var slots = document.querySelectorAll("[data-contact]");
-    var email = (window.SITE && window.SITE.contactEmail) || "";
-    for (var i = 0; i < slots.length; i++) slots[i].textContent = email;
+    var site = window.SITE || {};
+
+    var mails = document.querySelectorAll("[data-contact-link]");
+    for (var i = 0; i < mails.length; i++) {
+      if (site.contactEmail) {
+        mails[i].textContent = site.contactEmail;
+        mails[i].setAttribute("href", "mailto:" + site.contactEmail);
+      } else {
+        mails[i].textContent = "";
+        mails[i].removeAttribute("href");
+      }
+    }
+
+    var links = "";
+    if (site.instagram) links += '<a href="' + esc(site.instagram) + '" target="_blank" rel="noopener" aria-label="DJ Kelly Kay on Instagram">' + svgInstagram + "</a>";
+    if (site.soundcloud) links += '<a href="' + esc(site.soundcloud) + '" target="_blank" rel="noopener" aria-label="DJ Kelly Kay on SoundCloud">' + svgSoundcloud + "</a>";
+    var socials = document.querySelectorAll("[data-social]");
+    for (var j = 0; j < socials.length; j++) socials[j].innerHTML = links;
   }
 
   document.addEventListener("DOMContentLoaded", function () {

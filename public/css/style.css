@@ -244,6 +244,12 @@ a:hover { color: var(--accent-hover); }
   flex-wrap: wrap;
 }
 .footer .wordmark span { font-size: 12px; }
+.footer-social { display: flex; gap: 6px; align-items: center; }
+.footer-social a { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; color: var(--muted); }
+.footer-social a:hover { color: var(--accent); }
+.footer-copy { color: var(--muted); }
+.footer-copy a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.footer-copy a:hover { color: var(--accent-hover); }
 
 /* ---------- mixtape page ---------- */
 

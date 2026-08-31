@@ -392,7 +392,9 @@ window.MIXTAPES = [
   }
 ];
 
-// Site-wide facts. Replace the placeholder before going live.
+// Site-wide facts.
 window.SITE = {
-  contactEmail: "[YOUR CONTACT EMAIL]"
+  contactEmail: "djkellykay@gmail.com",
+  instagram: "https://www.instagram.com/djkellykay/",
+  soundcloud: "https://soundcloud.com/user-365644131"
 };

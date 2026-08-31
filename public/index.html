@@ -1,47 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>DJ Kelly Kay</title>
-	<meta name="description" content="DJ Kelly Kay — official site. Coming soon.">
-	<style>
-		:root {
-			--bg: #0b0b0f;
-			--fg: #f4f4f5;
-			--accent: #e0447c;
-		}
-		* { margin: 0; box-sizing: border-box; }
-		body {
-			min-height: 100svh;
-			display: grid;
-			place-items: center;
-			background: radial-gradient(120% 120% at 50% 0%, #1a1023 0%, var(--bg) 60%);
-			color: var(--fg);
-			font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-			text-align: center;
-			padding: 2rem;
-		}
-		h1 {
-			font-size: clamp(2.5rem, 8vw, 5rem);
-			font-weight: 800;
-			letter-spacing: 0.04em;
-			text-transform: uppercase;
-		}
-		h1 span { color: var(--accent); }
-		p {
-			margin-top: 1rem;
-			font-size: clamp(1rem, 2.5vw, 1.25rem);
-			color: #a1a1aa;
-			letter-spacing: 0.2em;
-			text-transform: uppercase;
-		}
-	</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DJ Kelly Kay — Mixtapes</title>
+  <meta name="description" content="DJ Kelly Kay makes mixtapes — continuous, start-to-finish mixes you can stream or download and keep. No gigs, just tapes.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF5A1E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='5' width='20' height='14' rx='2'/%3E%3Ccircle cx='8.5' cy='11' r='2'/%3E%3Ccircle cx='15.5' cy='11' r='2'/%3E%3Cpath d='M6.5 19l1.2-2.5h8.6L17.5 19'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-	<main>
-		<h1>DJ <span>Kelly Kay</span></h1>
-		<p>Coming soon</p>
-	</main>
+<body data-page="home">
+  <div class="wrap">
+
+    <nav class="nav">
+      <a class="wordmark" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5A1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><circle cx="15.5" cy="11" r="2"></circle><path d="M6.5 19l1.2-2.5h8.6L17.5 19"></path></svg>
+        <span>DJ KELLY KAY</span>
+      </a>
+      <div class="nav-links">
+        <a href="#tapes">The Crate</a>
+        <a href="#about" class="hide-mobile">About</a>
+        <a href="#latest" class="accent">Latest tape</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <h1>NO GIGS.<br>JUST <em>TAPES.</em></h1>
+        <p class="hero-sub">DJ Kelly Kay makes mixtapes — continuous, start-to-finish mixes you can stream right here or download and keep. No clubs, no tour dates, no ticket links. When a tape is ready, it lands on this page.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-accent" type="button" id="hero-play">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 1.5l11 6.5-11 6.5z"></path></svg>
+            Play the latest tape
+          </button>
+          <a class="btn btn-text" href="#tapes">
+            Browse the crate
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v10M3.5 8.5L8 13l4.5-4.5"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div class="featured" id="featured"></div>
+    </header>
+
+    <section class="crate" id="tapes">
+      <div class="crate-head">
+        <h2>THE CRATE</h2>
+        <p>Every volume streams free. Downloads are yours to keep.</p>
+      </div>
+      <div class="crate-grid" id="crate-grid"></div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>THE TAPE IS<br>THE SHOW.</h2>
+      <div class="about-copy">
+        <p>Kelly Kay doesn't play clubs, festivals, or private parties. Each volume is the whole performance: one continuous mix, sequenced and recorded end to end, released only when it's ready.</p>
+        <p>Press play and the tape streams right here in your browser. Hit download and the full mix is yours to keep — offline, in the car, wherever the errands take you.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a class="wordmark" href="index.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5A1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><circle cx="15.5" cy="11" r="2"></circle><path d="M6.5 19l1.2-2.5h8.6L17.5 19"></path></svg>
+        <span>DJ KELLY KAY</span>
+      </a>
+      <div>© 2026 DJ Kelly Kay · <span data-contact></span></div>
+    </footer>
+
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

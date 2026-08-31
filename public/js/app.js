@@ -26,6 +26,9 @@
   var svgDownload = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7L8 10.5 11.5 7M2.5 13.5h11"></path></svg>';
 
   function coverHTML(tape) {
+    if (tape.coverImage) {
+      return '<img class="cover cover-img" src="' + esc(tape.coverImage) + '" alt="' + esc(tape.coverAlt || tape.title + " — mixtape cover art") + '" loading="lazy">';
+    }
     var border = tape.coverBorder ? "border: 1px solid " + tape.coverBorder + ";" : "";
     return (
       '<div class="cover" style="background: ' + tape.coverBg + "; color: " + tape.coverInk + ";" + border + '">' +
@@ -34,6 +37,17 @@
       '<div class="cover-bottom"><div class="cover-num">' + esc(tape.vol) + '</div><div class="cover-title">' + esc(tape.title) + "</div></div>" +
       "</div>"
     );
+  }
+
+  // Meta line under a tape name. Only states what the data actually
+  // has: track count / length when known, else the tape's subtitle.
+  function factsLine(tape, extra) {
+    var parts = [];
+    if (tape.trackCount) parts.push(tape.trackCount + " tracks");
+    if (tape.minutes) parts.push(tape.minutes + " min");
+    if (!parts.length && tape.subtitle) parts.push(tape.subtitle);
+    if (extra) parts.push(extra);
+    return esc(parts.join(" · "));
   }
 
   // ---------- toast ----------
@@ -131,11 +145,16 @@
     }
     player.tape = tape;
     var coverEl = player.el.querySelector(".player-cover");
-    coverEl.style.background = tape.coverBg;
-    coverEl.style.color = tape.coverInk;
-    coverEl.textContent = tape.vol;
+    if (tape.coverImage) {
+      coverEl.style.background = "url('" + tape.coverImage + "') center / cover no-repeat";
+      coverEl.textContent = "";
+    } else {
+      coverEl.style.background = tape.coverBg;
+      coverEl.style.color = tape.coverInk;
+      coverEl.textContent = tape.vol;
+    }
     player.el.querySelector(".player-title").textContent = tape.title;
-    player.el.querySelector(".player-sub").textContent = "Vol. " + tape.vol + " · " + tape.runtime;
+    player.el.querySelector(".player-sub").textContent = ["Vol. " + tape.vol, tape.runtime].filter(Boolean).join(" · ");
     player.el.classList.add("active");
     document.body.classList.add("has-player");
     audio.src = tape.streamUrl;
@@ -180,7 +199,7 @@
           '<div class="stack">' +
           '<div class="eyebrow">LATEST · VOL. ' + esc(latest.vol) + "</div>" +
           '<div class="tape-name"><a href="mixtape.html?id=' + encodeURIComponent(latest.id) + '">' + esc(latest.title) + "</a></div>" +
-          '<div class="tape-facts">' + latest.trackCount + " tracks · " + latest.minutes + " min · " + esc(latest.released) + "</div>" +
+          '<div class="tape-facts">' + factsLine(latest, latest.released) + "</div>" +
           "</div>" +
           '<button class="btn btn-ghost" type="button" data-download="' + esc(latest.id) + '">' + svgDownload + "Download</button>" +
           "</div>";
@@ -201,7 +220,7 @@
           '<div class="info">' +
           '<div class="eyebrow">VOL. ' + esc(t.vol) + " · " + esc(month) + "</div>" +
           '<div class="tape-name"><a href="mixtape.html?id=' + encodeURIComponent(t.id) + '">' + esc(t.title) + "</a></div>" +
-          '<div class="tape-facts">' + t.trackCount + " tracks · " + t.minutes + " min</div>" +
+          '<div class="tape-facts">' + factsLine(t) + "</div>" +
           "</div>" +
           '<div class="actions">' +
           '<button class="btn btn-ghost btn-listen" type="button" data-play="' + esc(t.id) + '">' + svgPlay + "<span>Listen</span></button>" +
@@ -254,7 +273,7 @@
         '<div class="headings">' +
         '<div class="eyebrow">VOL. ' + esc(tape.vol) + " · RELEASED " + esc((tape.released || "").toUpperCase()) + "</div>" +
         "<h1>" + esc(tape.title) + "</h1>" +
-        '<div class="tape-facts">' + tape.trackCount + " tracks · " + tape.minutes + " min · one continuous mix</div>" +
+        '<div class="tape-facts">' + factsLine(tape, tape.trackCount ? "one continuous mix" : "") + "</div>" +
         "</div>" +
         (tape.blurb ? '<p class="tape-blurb">' + esc(tape.blurb) + "</p>" : "") +
         '<div class="tracklist">' +

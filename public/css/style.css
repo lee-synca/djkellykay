@@ -163,6 +163,15 @@ a:hover { color: var(--accent-hover); }
   text-align: right;
 }
 
+/* Image cover art (real tapes) — same footprint as the drawn cassette covers */
+.cover.cover-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  padding: 0;
+}
+
 /* ---------- featured tape ---------- */
 
 .featured { display: flex; flex-direction: column; gap: 20px; justify-self: end; width: min(440px, 100%); }
@@ -401,6 +410,7 @@ body.has-player { padding-bottom: 84px; }
     border-bottom: 1px solid var(--line-soft);
   }
   .tape-card .cover { padding: 8px; border-radius: 3px; }
+  .tape-card .cover.cover-img { padding: 0; }
   .tape-card .cover-top, .tape-card .cover-window, .tape-card .cover-title { display: none; }
   .tape-card .cover-num { font-size: 22px; }
   .tape-card .cover-bottom { align-items: flex-end; height: 100%; }

@@ -153,7 +153,7 @@ window.MIXTAPES = [
     streamUrl: "https://files.djkellykay.com/DJ%20Kelly%20Kay%20-%20Backyard%20Island%20Vibes.mp3",
     downloadUrl: "https://files.djkellykay.com/DJ%20Kelly%20Kay%20-%20Backyard%20Island%20Vibes.mp3",
     tracks: [
-      "Spawnbreezie - Oh My Goodness",
+      "Sammielz - Addicted",
       "Spawnbreezie - Don't Let Go",
       "Fortafy - Missing My Love",
       "Siaosi - Feluteni",
